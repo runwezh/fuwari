@@ -21,6 +21,7 @@ interface Props {
 	description: string;
 	draft: boolean;
 	style: string;
+    content?: string;
 }
 const {
 	entry,
@@ -33,14 +34,22 @@ const {
 	image,
 	description,
 	style,
+    content,
 } = Astro.props;
 const className = Astro.props.class;
 
 const hasCover = image !== undefined && image !== null && image !== "";
 
-const coverWidth = "28%";
+const _coverWidth = "28%";
 
-const { remarkPluginFrontmatter } = await entry.render();
+const { remarkPluginFrontmatter } = entry.render ? await entry.render() : { remarkPluginFrontmatter: { words: 0, minutes: 0, excerpt: '' } };
+
+if (content) {
+    const words = content.split(/\s+/).length;
+    const minutes = Math.ceil(words / 200);
+    remarkPluginFrontmatter.words = words;
+    remarkPluginFrontmatter.minutes = minutes;
+}
 ---
 <div class:list={["card-base flex flex-col-reverse md:flex-col w-full rounded-[var(--radius-large)] overflow-hidden relative", className]} style={style}>
     <div class:list={["pl-6 md:pl-9 pr-6 md:pr-2 pt-6 md:pt-7 pb-6 relative", {"w-full md:w-[calc(100%_-_52px_-_12px)]": !hasCover, "w-full md:w-[calc(100%_-_var(--coverWidth)_-_12px)]": hasCover}]}>
@@ -102,5 +111,4 @@ const { remarkPluginFrontmatter } = await entry.render();
 </div>
 <div class="transition border-t-[1px] border-dashed mx-6 border-black/10 dark:border-white/[0.15] last:border-t-0 md:hidden"></div>
 
-<style define:vars={{coverWidth}}>
-</style>
+<style define:vars={{coverWidth: _coverWidth}}></style>

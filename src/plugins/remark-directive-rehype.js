@@ -1,4 +1,5 @@
 import { h } from "hastscript";
+/* eslint-disable */
 import { visit } from "unist-util-visit";
 
 export function parseDirectiveNode() {

@@ -1,38 +1,35 @@
-import Key from "../i18nKey";
-import type { Translation } from "../translation";
+export const zh_CN = {
+	home: "主页",
+	about: "关于",
+	archive: "历史",
+	search: "搜索",
 
-export const zh_CN: Translation = {
-	[Key.home]: "主页",
-	[Key.about]: "关于",
-	[Key.archive]: "历史",
-	[Key.search]: "搜索",
+	tags: "标签",
+	categories: "分类",
+	recentPosts: "最新文章",
 
-	[Key.tags]: "标签",
-	[Key.categories]: "分类",
-	[Key.recentPosts]: "最新文章",
+	comments: "评论",
 
-	[Key.comments]: "评论",
+	untitled: "无标题",
+	uncategorized: "未分类",
+	noTags: "无标签",
 
-	[Key.untitled]: "无标题",
-	[Key.uncategorized]: "未分类",
-	[Key.noTags]: "无标签",
+	wordCount: "字",
+	wordsCount: "字",
+	minuteCount: "分钟",
+	minutesCount: "分钟",
+	postCount: "篇文章",
+	postsCount: "篇文章",
 
-	[Key.wordCount]: "字",
-	[Key.wordsCount]: "字",
-	[Key.minuteCount]: "分钟",
-	[Key.minutesCount]: "分钟",
-	[Key.postCount]: "篇文章",
-	[Key.postsCount]: "篇文章",
+	themeColor: "主题色",
 
-	[Key.themeColor]: "主题色",
+	lightMode: "亮色",
+	darkMode: "暗色",
+	systemMode: "跟随系统",
 
-	[Key.lightMode]: "亮色",
-	[Key.darkMode]: "暗色",
-	[Key.systemMode]: "跟随系统",
+	more: "更多",
 
-	[Key.more]: "更多",
-
-	[Key.author]: "作者",
-	[Key.publishedAt]: "发布于",
-	[Key.license]: "许可协议",
+	author: "作者",
+	publishedAt: "发布于",
+	license: "许可协议",
 };

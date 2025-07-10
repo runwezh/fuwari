@@ -4,26 +4,28 @@ import { getPostUrlBySlug } from "@utils/url-utils";
 import PostCard from "./PostCard.astro";
 
 const { page } = Astro.props;
+const content = await Astro.slots.render('default');
 
 // biome-ignore lint/style/useConst: `delay` is modified in the template
 let delay = 0;
 const interval = 50;
 ---
 <div class="transition flex flex-col rounded-[var(--radius-large)] bg-[var(--card-bg)] py-1 md:py-0 md:bg-transparent md:gap-4 mb-4">
-    {page.data.map((entry: CollectionEntry<"posts">) => (
+    {(Array.isArray(page) ? page : [page]).map((entry: CollectionEntry<"posts">) => (
         <PostCard
                 entry={entry}
-                title={entry.data.title}
-                tags={entry.data.tags}
-                category={entry.data.category}
-                published={entry.data.published}
-                updated={entry.data.updated}
+                title={entry.data?.title || (entry as any).title}
+                tags={entry.data?.tags || (entry as any).tags}
+                category={entry.data?.category || (entry as any).category}
+                published={entry.data?.published || (entry as any).pubDate}
+                updated={entry.data?.updated || (entry as any).updatedDate}
                 url={getPostUrlBySlug(entry.slug)}
-                image={entry.data.image}
-                description={entry.data.description}
-                draft={entry.data.draft}
+                image={entry.data?.image || (entry as any).banner}
+                description={entry.data?.description || (entry as any).description}
+                draft={entry.data?.draft || false}
                 class:list="onload-animation"
                 style={`animation-delay: calc(var(--content-delay) + ${delay++ * interval}ms);`}
+                content={content}
         ></PostCard>
     ))}
 </div>

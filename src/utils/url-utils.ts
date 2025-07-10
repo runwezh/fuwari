@@ -23,6 +23,7 @@ export function getCategoryUrl(category: string): string {
 }
 
 export function getDir(path: string): string {
+	if (!path) return "/";
 	const lastSlashIndex = path.lastIndexOf("/");
 	if (lastSlashIndex < 0) {
 		return "/";

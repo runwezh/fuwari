@@ -1,0 +1,44 @@
+---
+import PostPage from '@/components/PostPage.astro';
+import { profileConfig } from '@/config';
+
+// 在这里设置文章的元数据，例如标题、描述、发布日期等
+// 这些信息将用于页面SEO和在组件中显示
+const post = {
+    title: '我的特别网页文章',
+    description: '这是一个完全由Astro组件构成的页面，而不是Markdown。',
+    author: profileConfig.name,
+    pubDate: new Date(), // 设置为你希望的发布日期
+    updatedDate: new Date(),
+    tags: ['tech', 'astro', 'web'],
+    banner: '/src/assets/images/demo-banner.png' // 可选的文章头图
+};
+---
+
+<PostPage page={post}>
+    <!-- 
+        这里是你的自定义网页内容区域。
+        你可以在这里编写任何HTML、Astro组件、或者引入Svelte/React等组件。
+        这部分内容会替换掉通常由Markdown生成的内容。
+    -->
+    <div class="custom-content">
+        <h1>这是一个 H1 标题</h1>
+        <p>
+            这是一个段落。你可以自由地在这里添加 <strong>HTML</strong> 标签，或者引入其他组件。
+        </p>
+        
+        <style>
+            /* 你甚至可以在这里添加只作用于当前页面的样式 */
+            .custom-content {
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                background-color: #f9f9f9;
+            }
+            .dark .custom-content {
+                background-color: #2d3748;
+                border-color: #4a5568;
+            }
+        </style>
+    </div>
+</PostPage>

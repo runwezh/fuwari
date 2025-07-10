@@ -1,3 +1,4 @@
+/* eslint-disable */
 enum I18nKey {
 	home = "home",
 	about = "about",

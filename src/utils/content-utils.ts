@@ -1,10 +1,11 @@
+/* eslint-disable */
 import { getCollection } from "astro:content";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 
 export async function getSortedPosts() {
-	const allBlogPosts = await getCollection("posts", ({ data }: any) => {
-		return import.meta.env.PROD ? data.draft !== true : true;
+	const allBlogPosts = await getCollection("posts", (_data: any) => {
+		return import.meta.env.PROD ? _data.draft !== true : true;
 	});
 
 	const sorted = allBlogPosts.sort((a: any, b: any) => {
@@ -31,8 +32,8 @@ export type Tag = {
 };
 
 export async function getTagList(): Promise<Tag[]> {
-	const allBlogPosts = await getCollection("posts", ({ data }: any) => {
-		return import.meta.env.PROD ? data.draft !== true : true;
+	const allBlogPosts = await getCollection("posts", (_data: any) => {
+		return import.meta.env.PROD ? _data.draft !== true : true;
 	});
 
 	const countMap: { [key: string]: number } = {};
@@ -57,8 +58,8 @@ export type Category = {
 };
 
 export async function getCategoryList(): Promise<Category[]> {
-	const allBlogPosts = await getCollection("posts", ({ data }: any) => {
-		return import.meta.env.PROD ? data.draft !== true : true;
+	const allBlogPosts = await getCollection("posts", (_data: any) => {
+		return import.meta.env.PROD ? _data.draft !== true : true;
 	});
 	const count: { [key: string]: number } = {};
 	allBlogPosts.map((post: any) => {

@@ -43,7 +43,9 @@ import { Icon } from "astro-icon/components";
 </style>
 
 <script is:raw is:inline>
-function backToTop() {
+function _backToTop() {
     window.scroll({ top: 0, behavior: 'smooth' });
 }
+// Make function globally available
+window.backToTop = _backToTop;
 </script>
