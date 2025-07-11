@@ -2,6 +2,7 @@ import { h } from "hastscript";
 import { visit } from "unist-util-visit";
 
 export function parseDirectiveNode() {
+	// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 	return (tree, { data }) => {
 		visit(tree, (node) => {
 			if (

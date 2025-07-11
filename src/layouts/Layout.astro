@@ -111,6 +111,7 @@ const bannerOffset =
 		))}
 
 		<!-- Set the theme before the page is rendered to avoid a flash -->
+		// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 		<script is:inline define:vars={{DEFAULT_THEME, LIGHT_MODE, DARK_MODE, AUTO_MODE, BANNER_HEIGHT_EXTEND, PAGE_WIDTH, configHue}}>
 			// Load the theme from local storage
 			const theme = localStorage.getItem('theme') || DEFAULT_THEME;
@@ -165,6 +166,7 @@ const bannerOffset =
 <style is:global define:vars={{
 	bannerOffset,
 	'banner-height-home': `${BANNER_HEIGHT_HOME}vh`,
+	// eslint-disable-next-line astro/no-unused-define-vars-in-style
 	'banner-height': `${BANNER_HEIGHT}vh`,
 }}>
 @tailwind components;
@@ -334,6 +336,7 @@ function showBanner() {
 	
 	const banner = document.getElementById('banner');
 	if (!banner) {
+		// eslint-disable-next-line no-console
 		console.error('Banner element not found');
 		return;
 	}
