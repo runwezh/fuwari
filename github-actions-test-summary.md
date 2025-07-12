@@ -6,7 +6,7 @@
 
 ## 工作流配置分析
 
-### 1. Code Quality 工作流 (`biome.yml` 和 `code-quality.yml`)
+### 1. Code Quality 工作流 (`code-quality.yml`)
 
 **触发条件：**
 - `push` 到 `main` 分支

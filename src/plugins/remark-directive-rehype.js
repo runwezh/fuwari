@@ -1,17 +1,15 @@
 import { h } from "hastscript";
-/* eslint-disable */
+
 import { visit } from "unist-util-visit";
 
 export function parseDirectiveNode() {
-	// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-	return (tree, { data }) => {
+	return (tree, { data: _data }) => {
 		visit(tree, (node) => {
 			if (
 				node.type === "containerDirective" ||
 				node.type === "leafDirective" ||
 				node.type === "textDirective"
 			) {
-				// biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
 				const data = node.data || (node.data = {});
 				node.attributes = node.attributes || {};
 				if (

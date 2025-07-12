@@ -10,8 +10,8 @@ interface Props {
 	basePath?: string;
 }
 
+import { url } from "@/utils/url-utils";
 import { Image } from "astro:assets";
-import { url } from "../../utils/url-utils";
 
 const { id, src, alt, position = "center", basePath = "/" } = Astro.props;
 const className = Astro.props.class;
@@ -26,8 +26,7 @@ const isPublic = src.startsWith("/");
 
 // TODO temporary workaround for images dynamic import
 // https://github.com/withastro/astro/issues/3373
-// biome-ignore lint/suspicious/noImplicitAnyLet: <explanation>
-let img;
+let img: any;
 if (isLocal) {
 	// eslint-disable-next-line no-undef
 	const files = import.meta.glob<ImageMetadata>("../../**", {
@@ -38,7 +37,6 @@ if (isLocal) {
 		.replace(/\\/g, "/");
 	const file = files[normalizedPath];
 if (!file) {
-// eslint-disable-next-line no-console
 console.error(
 `\n[ERROR] Image file not found: ${normalizedPath.replace("../../", "src/")}`,
 );
