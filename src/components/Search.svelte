@@ -1,16 +1,30 @@
+<script context="module" lang="ts">
+// 声明 pagefind 变量
+declare let pagefind: any;
+</script>
+
 <script lang="ts">
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import Icon from "@iconify/svelte";
-import { url } from "@utils/url-utils.ts";
+import { url } from "../utils/url-utils";
 import { onMount } from "svelte";
+import { PAGE_SIZE } from "@constants/constants.ts";
+
+interface SearchResult {
+  url: string;
+  meta: {
+    title: string;
+  };
+  excerpt: string;
+}
 
 // biome-ignore lint/style/useConst: These are bind variables
 let keywordDesktop = "";
 // biome-ignore lint/style/useConst: These are bind variables
 let keywordMobile = "";
-let result = [];
-const fakeResult = [
+let result: SearchResult[] = [];
+const fakeResult: SearchResult[] = [
 	{
 		url: url("/"),
 		meta: {

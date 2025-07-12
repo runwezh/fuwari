@@ -202,22 +202,19 @@ bannerOffset: _bannerOffset,
 </style>
 
 <script>
-import 'overlayscrollbars/overlayscrollbars.css';
 import {
 OverlayScrollbars,
-// ScrollbarsHidingPlugin,
-// SizeObserverPlugin,
-// ClickScrollPlugin
 } from 'overlayscrollbars';
-import {getHue, getStoredTheme, setHue, setTheme} from "../utils/setting-utils";
-import {pathsEqual, url} from "../utils/url-utils";
+import 'overlayscrollbars/overlayscrollbars.css';
+import { siteConfig } from '../config';
 import {
 BANNER_HEIGHT,
-BANNER_HEIGHT_HOME,
 BANNER_HEIGHT_EXTEND,
+BANNER_HEIGHT_HOME,
 MAIN_PANEL_OVERLAPS_BANNER_HEIGHT
 } from "../constants/constants";
-import { siteConfig } from '../config';
+import { getHue, getStoredTheme, setHue, setTheme } from "../utils/setting-utils";
+import { pathsEqual, url } from "../utils/url-utils";
 
 /* Preload fonts */
 // (async function() {
@@ -357,6 +354,8 @@ showBanner();
 init();
 
 const setup = () => {
+if (!window.swup) return;
+
 // TODO: temp solution to change the height of the banner
 /*
 window.swup.hooks.on('animation:out:start', () => {
@@ -525,6 +524,8 @@ lightbox.init()
 }
 
 const setup = () => {
+if (!window.swup) return;
+
 if (!lightbox) {
 createPhotoSwipe()
 }
